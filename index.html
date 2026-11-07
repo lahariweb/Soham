@@ -3321,6 +3321,127 @@ body main#app .pchip {
 /* Prevent longer profile names from pushing buttons out of a card. */
 #profileOverlay .pp-name-dc{min-width:0;overflow:hidden;text-overflow:ellipsis;}
 </style>
+<style id="soham-v30-readable-notifications">
+
+/* V30 — high-contrast, readable temporary notifications and Undo action */
+html body .undo-toast,
+html body #undoToast,
+html body .toast-msg,
+html body #toastMsg {
+  background: #10221B !important;
+  color: #F7F0E3 !important;
+  border: 1px solid rgba(223, 193, 143, .72) !important;
+  box-shadow: 0 9px 30px rgba(0,0,0,.46) !important;
+  font-family: "Nunito Sans", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+  -webkit-text-fill-color: #F7F0E3 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+  max-width: min(92vw, 760px) !important;
+  box-sizing: border-box !important;
+  padding: 11px 17px !important;
+  white-space: normal !important;
+}
+html body #undoToast {
+  gap: 12px !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  text-align: center !important;
+}
+html body #undoToast span,
+html body #toastMsg span {
+  color: #F7F0E3 !important;
+  -webkit-text-fill-color: #F7F0E3 !important;
+}
+html body #undoToast button,
+html body .undo-toast button {
+  color: #F2D3A0 !important;
+  -webkit-text-fill-color: #F2D3A0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  font: 700 13px "Nunito Sans", sans-serif !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  cursor: pointer !important;
+}
+html body #undoToast button:hover,
+html body #undoToast button:focus-visible {
+  color: #FFF4DC !important;
+  -webkit-text-fill-color: #FFF4DC !important;
+  outline-color: #E4C69B !important;
+}
+html body #toastMsg.bad { border-color: #D9A891 !important; }
+@media (max-width: 620px) {
+  html body #undoToast, html body #toastMsg {
+    max-width: calc(100vw - 22px) !important;
+    font-size: 12px !important;
+    padding: 10px 13px !important;
+  }
+}
+</style>
+<style id="soham-v31-extra-icons">
+/* V31: transparent champagne-gold Extra Icons; three rows only. */
+#calendarIconPicker.soham-extra-picker{
+ display:flex!important;flex-direction:column!important;gap:7px!important;
+ overflow-x:hidden!important;overflow-y:visible!important;
+ background:transparent!important;border:0!important;
+}
+#calendarIconPicker .icon-picker-row{
+ display:flex!important;flex-wrap:nowrap!important;gap:7px!important;
+ overflow-x:auto!important;overflow-y:hidden!important;max-width:100%!important;
+ padding:2px 1px 5px!important;margin:0!important;
+ scrollbar-width:thin;scrollbar-color:rgba(208,182,138,.3) transparent;
+}
+#calendarIconPicker .soham-extra-icon{
+ width:43px!important;min-width:43px!important;height:43px!important;
+ padding:7px!important;background:transparent!important;
+ border:1px solid rgba(216,192,153,.30)!important;
+ border-radius:11px!important;box-shadow:none!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ color:#DCC49D!important;text-shadow:none!important;
+ display:inline-flex!important;align-items:center;justify-content:center;
+ transition:border-color .18s ease,box-shadow .18s ease!important;
+}
+#calendarIconPicker .soham-extra-icon .soham-glass-icon{
+ width:25px!important;height:25px!important;
+ border:0!important;border-radius:0!important;background:transparent!important;
+ box-shadow:none!important;backdrop-filter:none!important;
+ color:#DCC49D!important;
+}
+#calendarIconPicker .soham-extra-icon svg{width:23px!important;height:23px!important;filter:none!important;stroke:#DCC49D!important;}
+#calendarIconPicker .soham-extra-icon:is(:hover,:focus-visible,.selected){
+ border-color:#E7D0A7!important;background:rgba(217,191,148,.055)!important;
+ box-shadow:0 0 8px rgba(218,185,127,.20)!important;
+}
+@media(max-width:600px){#calendarIconPicker .soham-extra-icon{width:46px!important;min-width:46px!important;height:46px!important;}}
+</style>
+<style id="soham-v32-calendar-meals-ai">
+
+/* V32: consistent meal title styling, including Morning and Midday */
+main#app .mealgrid .mealcard .mtitle > span:first-child {
+  font-family:'Michroma','Nunito Sans',sans-serif !important;
+  font-size:clamp(11.5px,1.1vw,14px) !important;
+  font-style:normal !important;
+  font-weight:400 !important;
+  letter-spacing:.02em !important;
+  line-height:1.5 !important;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
+/* Distinguish real daily Schedule items from separate spontaneous events. */
+main#app .apple-day-grid .apple-event:not(.apple-parallel-event) {
+  border-left-color:#c7ab7e !important;
+}
+main#app .recipe-ai-numbers > summary { color:#eadcc5 !important; }
+main#app .recipe-ai-numbers textarea,main#app .recipe-ai-numbers select {
+  background:#101a15;color:#eee5d7;border:1px solid #655b49;
+  border-radius:10px;padding:9px;width:100%;box-sizing:border-box;
+}
+
+</style>
 </head>
 <body>
 <div class="bg-wm" id="bgWm"></div>
@@ -4658,6 +4779,26 @@ function fmt12(hhmm){ const m=toMin(hhmm); let h=Math.floor(m/60), mm=m%60; cons
 // A block's icon is usually an emoji string, but can be a custom image (a data: URI the person
 // supplied). Render either the right way instead of printing a raw data: URI as text.
 const GLASS_ICON_PATHS = {
+ 'extra-beauty':'<path d="M12 3c3 3 5 6 5 10a5 5 0 0 1-10 0c0-4 2-7 5-10Z"/><path d="M9 17v4h6v-4M9 10c2 1 4 1 6 0"/>',
+ 'extra-makeup':'<path d="M8 3h8v3H8zM9 6h6v13a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V6ZM9 11h6"/>',
+ 'extra-shower':'<path d="M4 21V8a5 5 0 0 1 10 0M11 8h7v3h-7zM12 14v1m4-1v1m-4 4v1m4-1v1"/>',
+ 'extra-spa':'<path d="M12 21c-5-2-7-6-7-10 3 0 6 1 7 5 1-4 4-5 7-5 0 4-2 8-7 10ZM12 16c-3-4-3-8 0-12 3 4 3 8 0 12Z"/>',
+ 'extra-grooming':'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8 8 12 12M8 16 20 4"/>',
+ 'extra-errands':'<rect x="4" y="8" width="16" height="13" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2M4 13h16"/>',
+ 'extra-email':'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7M16 3h5"/>',
+ 'extra-appointment':'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 5 2 2 5-5"/>',
+ 'extra-movie':'<rect x="3" y="7" width="18" height="14" rx="2"/><path d="m3 7 2-4h16l-2 4M8 3l-2 4m9-4-2 4m-3 5 6 3-6 3v-6Z"/>',
+ 'extra-music':'<path d="M10 18V5l10-2v13M10 8l10-2"/><circle cx="7" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
+ 'extra-podcast':'<circle cx="12" cy="11" r="2"/><path d="M9 21v-4a3 3 0 0 1 6 0v4M7 6a7 7 0 0 0 0 10M17 6a7 7 0 0 1 0 10M4 3a11 11 0 0 0 0 15M20 3a11 11 0 0 1 0 15"/>',
+ 'extra-boardgames':'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/>',
+ 'extra-meetup':'<circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M2 21v-3a6 6 0 0 1 12 0v3M15 15a4 4 0 0 1 7 3v3"/>',
+ 'extra-social':'<path d="M4 5h16v12H9l-5 4V5ZM8 10h8M8 13h5"/>',
+ 'extra-outing':'<path d="M12 22s8-7 8-13a8 8 0 0 0-16 0c0 6 8 13 8 13Z"/><circle cx="12" cy="9" r="3"/>',
+ 'extra-learning':'<path d="M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1ZM12 6v14M7 9h2m6 0h2"/>',
+ 'extra-writing':'<path d="m4 20 4-1 12-12-3-3L5 16l-1 4ZM14 7l3 3M4 23h16"/>',
+ 'extra-emergency':'<path d="M12 2 2 21h20L12 2Z"/><path d="M12 9v5m0 3v.5"/>',
+ 'extra-misc':'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+
 washer:'<rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M4 7h16"/><circle cx="12" cy="14" r="5"/><path d="M7 4.8h1M10 4.8h1"/>',fold:'<path d="M4 10h16l-2 11H6L4 10Z"/><path d="M7 10V4h10v6M8 14h8M10 17h4"/>',sink:'<path d="M3 11h18v3a7 7 0 0 1-7 7h-4a7 7 0 0 1-7-7v-3Z"/><path d="M8 11V7c0-4 8-4 8 0h-3M8 4v2M6 21h12"/>',kitchen:'<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 10h18M6 7h1M10 7h1M7 15h10M9 18h6"/>',vacuum:'<path d="M9 19h7m-3-1V8a3 3 0 0 1 6 0v6"/><circle cx="18" cy="18" r="3"/><path d="M3 21l8-8M3 18l8-8M3 21h5"/>',homeclean:'<path d="m3 11 9-8 9 8v10H3V11Z"/><path d="M8 21v-7h8v7M5 13l3 3m3-3 3 3"/>',laundry:'<path d="M4 11h16l-2 10H6L4 11ZM7 11l3-7m7 7-3-7M9 14v4m6-4v4"/>',
  sunrise:'<path d="M3 17h18M5 21h14M12 3v3M4.9 8l2 2M19.1 8l-2 2M3 13h2M19 13h2M7 17a5 5 0 0 1 10 0"/>',
  coffee:'<path d="M4 8h13v8a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8ZM17 9h2a3 3 0 0 1 0 6h-2M7 3v2M12 3v2"/>',
@@ -5512,8 +5653,12 @@ const iso = dateForDay(dayNum);
 const isToday = iso === todayISO();
 const hourRows = Array.from({length:24}, (_,i)=>{const minute=planningStart()+i*60;return `<div class="apple-hour-label" style="top:${i*60}px">${fmt12(toHHMM(minute))}${minute>=1440?' +1':''}</div>`;}).join('');
 const extras = (state.parallelActivities||[]).filter(a=>a.date===iso);
+// Show only explicitly added calendar entries: Schedule additions (TT) and
+// Spontaneous entries. The existing daily routine from state.days is NOT a
+// calendar event, even when it has been shifted, reordered, or overlapped.
+// Both addition types are stored in state.parallelActivities.
 const allEvents = [
-...extras.map(a=>{const linked=(state.brainDump||[]).find(t=>t.id===a.brainDumpId);return {id:a.id,title:a.title,icon:iconHTML(a.icon||'📎',16),time:a.time,dur:Number(a.dur)||30,done:linked?!!linked.done:!!a.done,skipped:!!a.skipped,color:(a.priority&&BD_COLOR[a.priority])||(a.category==='TT'?'#3d4a8a':'#b66b35'),kind:'parallel',category:a.category};})
+...extras.filter(a => a.category === 'TT' || a.category === 'Planned').map(a=>{const linked=(state.brainDump||[]).find(t=>t.id===a.brainDumpId);return {id:a.id,title:a.title,icon:iconHTML(a.icon||'📎',16),time:a.time,dur:Number(a.dur)||30,done:linked?!!linked.done:!!a.done,skipped:!!a.skipped,color:(a.priority&&BD_COLOR[a.priority])||(a.category==='TT'?'#3d4a8a':'#b66b35'),kind:'parallel',category:a.category};})
 ].map(e=>({...e,start:Math.max(0,planMinute(e.time)-planningStart()),end:Math.min(1440,Math.max(0,planMinute(e.time)-planningStart())+Math.max(15,Number(e.dur)||30))})).sort((a,b)=>a.start-b.start || a.end-b.end);
 const placed=[];
 allEvents.forEach(e=>{const cluster=placed.filter(x=>x.start<e.end && x.end>e.start);let lane=0;while(cluster.some(x=>x.lane===lane))lane++;const total=Math.max(lane+1,...cluster.map(x=>x.lane+1));e.lane=lane;e.lanes=total;cluster.forEach(x=>{x.lanes=Math.max(x.lanes||1,total);});placed.push(e);});
@@ -5521,7 +5666,7 @@ placed.forEach(e=>{const cluster=placed.filter(x=>x.start<e.end&&x.end>e.start);
 const events=placed.map(e=>{
 const top=e.start,height=Math.max(28,e.end-e.start),width=100/Math.max(1,e.lanes),left=e.lane*width;
 const safeTitle=String(e.title).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
-return `<div class="apple-event ${e.done?'done':''} ${e.kind==='parallel'?'apple-parallel-event':''}" onclick="event.stopPropagation();calendarEventTap(event,'${e.kind}','${e.id}')" style="top:${top}px;height:${height}px;left:calc(${left}% + 3px);width:calc(${width}% - 6px);right:auto;border-left-color:${e.color};${e.skipped?'opacity:.5;text-decoration:line-through':''}" title="Tap to complete; double-tap to edit"><span class="apple-event-time">${plannerTimeLabel(e.time)} – ${fmt12(toHHMM(e.end+planningStart()))}</span><strong>${e.icon} ${safeTitle}</strong>${e.kind==='parallel'?(e.category==='TT'?'<span class="apple-event-tag">🗓️ Added to Schedule</span>':'<span class="apple-event-tag">➕ Spontaneous</span>'):''}${e.skipped?'<span class="apple-event-tag">Skipped</span>':''}</div>`;
+return `<div class="apple-event ${e.done?'done':''} ${e.kind==='parallel'?'apple-parallel-event':''}" onclick="event.stopPropagation();calendarEventTap(event,'${e.kind}','${e.id}')" style="top:${top}px;height:${height}px;left:calc(${left}% + 3px);width:calc(${width}% - 6px);right:auto;border-left-color:${e.color};${e.skipped?'opacity:.5;text-decoration:line-through':''}" title="Tap to complete; double-tap to edit"><span class="apple-event-time">${plannerTimeLabel(e.time)} – ${fmt12(toHHMM(e.end+planningStart()))}</span><strong>${e.icon} ${safeTitle}</strong>${e.kind==='schedule'?'<span class="apple-event-tag">🗓️ Schedule</span>':e.kind==='parallel'?(e.category==='TT'?'<span class="apple-event-tag">🗓️ Added to Schedule</span>':'<span class="apple-event-tag">➕ Spontaneous</span>'):''}${e.skipped?'<span class="apple-event-tag">Skipped</span>':''}</div>`;
 }).join('');
 const allDay = extras.filter(a=>a.allDay);
 return `<section class="card apple-day-card ${extraClass||''}">
@@ -5543,6 +5688,15 @@ time change goes through "Reschedule" (TT) or the full editor (Unplanned), both 
 that check properly. */
 let calendarEventClickTimer = null;
 function calendarEventTap(ev, kind, id){
+if(kind==='schedule'){
+  // Schedule blocks use the same editor as the Schedule page; double-click opens it.
+  if(ev.detail===2){
+    if(calendarEventClickTimer) clearTimeout(calendarEventClickTimer);
+    calendarEventClickTimer=null;
+    openSheetFor(id);
+  }
+  return;
+}
 if(kind!=='parallel') return;
 if(ev.detail===1){
 if(calendarEventClickTimer) clearTimeout(calendarEventClickTimer);
@@ -5558,7 +5712,7 @@ else openParallelEditor(id);
 function calendarGridMinute(ev){const grid=ev.currentTarget.closest?ev.currentTarget.closest('#appleDayGrid'):document.getElementById('appleDayGrid');const r=grid.getBoundingClientRect();return planningStart()+Math.max(0,Math.min(1425,Math.round(((ev.clientY-r.top)/r.height*1440)/15)*15));}
 function calendarGridClick(ev,iso){if(ev.target.closest('.apple-event')||ev.target.closest('.apple-hour-label')){if(ev.target.closest('.apple-hour-label')){const m=calendarGridMinute(ev);openCalendarComposer(iso,m);}return;}openCalendarComposer(iso,calendarGridMinute(ev));}
 let lastComposerCategory = 'Planned';
-function selectComposerIcon(ic){const input=document.getElementById('calendarTaskIcon');if(!input)return;input.value=(input.value===ic)?'':ic;document.querySelectorAll('#calendarIconPicker .icon-opt').forEach(b=>b.classList.toggle('selected',b.textContent===input.value&&input.value!==''));}
+function selectComposerIcon(ic){const input=document.getElementById('calendarTaskIcon');if(!input)return;input.value=(input.value===ic)?'':ic;document.querySelectorAll('#calendarIconPicker .icon-opt').forEach(b=>{const same=(b.dataset.icon||b.textContent)===input.value&&input.value!=='';b.classList.toggle('selected',same);b.setAttribute('aria-pressed',String(same));});}
 function openCalendarComposer(iso,minute){
 let old=document.getElementById('calendarComposer'); if(old) old.remove();
 const start=Math.max(planningStart(),Math.min(planningStart()+1425,Math.round(minute/15)*15));
@@ -5569,11 +5723,11 @@ wrap.innerHTML=`<div class="sheet sheet-thin">
 <label for="calendarTaskTitle">Activity</label>
 <input id="calendarTaskTitle" maxlength="100" placeholder="Read, call someone…">
 <div id="calendarIconPickerWrap"><label>Icon (optional) — shows in Schedule and Spontaneous; defaults to 📎 if left blank</label>
-<div class="icon-picker" id="calendarIconPicker">
+<div class="icon-picker soham-extra-picker" id="calendarIconPicker">
 <input type="hidden" id="calendarTaskIcon" value="">
-<div class="icon-picker-row">${['🧠','🔍','➕','🚨'].map(ic=>`<button type="button" class="icon-opt" onclick="selectComposerIcon('${ic}')">${ic}</button>`).join('')}</div>
-<div class="icon-picker-row">${['🎮','🎬','🤖','🎧','🛜'].map(ic=>`<button type="button" class="icon-opt" onclick="selectComposerIcon('${ic}')">${ic}</button>`).join('')}</div>
-<div class="icon-picker-row">${['🗑️','🛍️','🤝'].map(ic=>`<button type="button" class="icon-opt" onclick="selectComposerIcon('${ic}')">${ic}</button>`).join('')}</div>
+<div class="icon-picker-row"><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-beauty" aria-label="Beauty care" title="Beauty care" aria-pressed="false" onclick="selectComposerIcon('glass:extra-beauty')">${iconHTML('glass:extra-beauty',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-makeup" aria-label="Makeup" title="Makeup" aria-pressed="false" onclick="selectComposerIcon('glass:extra-makeup')">${iconHTML('glass:extra-makeup',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-shower" aria-label="Shower" title="Shower" aria-pressed="false" onclick="selectComposerIcon('glass:extra-shower')">${iconHTML('glass:extra-shower',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-spa" aria-label="Spa" title="Spa" aria-pressed="false" onclick="selectComposerIcon('glass:extra-spa')">${iconHTML('glass:extra-spa',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-grooming" aria-label="Grooming" title="Grooming" aria-pressed="false" onclick="selectComposerIcon('glass:extra-grooming')">${iconHTML('glass:extra-grooming',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-errands" aria-label="Errands" title="Errands" aria-pressed="false" onclick="selectComposerIcon('glass:extra-errands')">${iconHTML('glass:extra-errands',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-email" aria-label="Email admin" title="Email admin" aria-pressed="false" onclick="selectComposerIcon('glass:extra-email')">${iconHTML('glass:extra-email',24)}</button></div>
+<div class="icon-picker-row"><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-appointment" aria-label="Appointment" title="Appointment" aria-pressed="false" onclick="selectComposerIcon('glass:extra-appointment')">${iconHTML('glass:extra-appointment',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-movie" aria-label="Movie" title="Movie" aria-pressed="false" onclick="selectComposerIcon('glass:extra-movie')">${iconHTML('glass:extra-movie',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-music" aria-label="Music" title="Music" aria-pressed="false" onclick="selectComposerIcon('glass:extra-music')">${iconHTML('glass:extra-music',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-podcast" aria-label="Podcasts" title="Podcasts" aria-pressed="false" onclick="selectComposerIcon('glass:extra-podcast')">${iconHTML('glass:extra-podcast',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-boardgames" aria-label="Board games" title="Board games" aria-pressed="false" onclick="selectComposerIcon('glass:extra-boardgames')">${iconHTML('glass:extra-boardgames',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-meetup" aria-label="Meet up" title="Meet up" aria-pressed="false" onclick="selectComposerIcon('glass:extra-meetup')">${iconHTML('glass:extra-meetup',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-social" aria-label="Social" title="Social" aria-pressed="false" onclick="selectComposerIcon('glass:extra-social')">${iconHTML('glass:extra-social',24)}</button></div>
+<div class="icon-picker-row"><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-outing" aria-label="Outing" title="Outing" aria-pressed="false" onclick="selectComposerIcon('glass:extra-outing')">${iconHTML('glass:extra-outing',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-learning" aria-label="Learning" title="Learning" aria-pressed="false" onclick="selectComposerIcon('glass:extra-learning')">${iconHTML('glass:extra-learning',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-writing" aria-label="Writing" title="Writing" aria-pressed="false" onclick="selectComposerIcon('glass:extra-writing')">${iconHTML('glass:extra-writing',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-emergency" aria-label="Emergency" title="Emergency" aria-pressed="false" onclick="selectComposerIcon('glass:extra-emergency')">${iconHTML('glass:extra-emergency',24)}</button><button type="button" class="icon-opt soham-extra-icon" data-icon="glass:extra-misc" aria-label="Misc" title="Misc" aria-pressed="false" onclick="selectComposerIcon('glass:extra-misc')">${iconHTML('glass:extra-misc',24)}</button></div>
 </div>
 </div>
 <div class="edit-grid" style="margin-top:10px">
@@ -9968,7 +10122,7 @@ ${renderWaterCard()}
 ${mealCard("breakfast","Morning","🍳")}
 ${mealCard("lunch","Midday","🍲")}
 ${mealCard("snack","Snack","🍵")}
-${mealCard("dinner","Evening",uiIcon("plate"))}
+${mealCard("dinner","Evening","🍽️")}
 </div>
 ${renderQuickAdd()}`;
 }
@@ -10315,6 +10469,20 @@ const available=allRecipes().filter(r=>!r.bookmarkOnly&&r.need?.length&&r.need.e
 return `<details class="card recipe-add-card"><summary>＋ Create recipe</summary><p class="small">Paste recipe text or add a link. The app will split out ingredients and steps where it can, then create editable rough macro estimates. A link alone is saved as a source link; this offline HTML app cannot reliably read recipe pages from other websites.</p>
 <div class="recipe-add-grid"><div><label class="small">Recipe name</label><input id="recipeName" placeholder="e.g. Paneer lunch bowl"></div><div><label class="small">Meal category</label><select id="recipeMeal"><option value="breakfast">Breakfast</option><option value="lunch" selected>Lunch</option><option value="snack">Snacks</option><option value="dinner">Dinner</option></select></div><div class="recipe-url-field"><label class="small">Online recipe link (optional)</label><input id="recipeUrl" type="url" placeholder="https://..."></div><div class="recipe-paste-field"><label class="small">Paste recipe — name, ingredients, method/instructions</label><textarea id="recipePaste" rows="5" placeholder="Recipe name\nIngredients:\n- 1 cup lentils\n- 1 onion\n\nMethod:\n1. Cook lentils…"></textarea></div></div>
 <p class="small">Macro estimates are approximate per recipe, not verified nutrition. You can edit them after adding.</p><button class="btn" onclick="parseRecipeDraft()">Parse & add recipe</button></details>
+<details class="card recipe-ai-numbers" style="margin-bottom:16px"><summary class="small" style="cursor:pointer;font-weight:700">🤖 Don't know the numbers? Ask AI</summary>
+<div style="margin-top:10px">
+<p class="small">Choose the meal to save the estimated nutrition under:</p>
+<select aria-label="Meal for AI estimate" onchange="quickAddMeal=this.value" style="margin-bottom:10px">
+${[['breakfast','Morning'],['lunch','Midday'],['snack','Snack'],['dinner','Evening']].map(([k,l])=>`<option value="${k}" ${quickAddMeal===k?'selected':''}>${l}</option>`).join('')}
+</select>
+<p class="small"><b>1.</b> <button class="btn ghost" onclick="copyAiPrompt()">📋 Copy AI prompt</button> Paste into your AI chat and describe the food and portion.</p>
+<textarea id="aiPromptBox" readonly style="display:none;width:100%;min-height:80px" onclick="this.select()"></textarea>
+<p class="small"><b>2.</b> Paste the returned JSON estimate here:</p>
+<textarea id="aiPasteInput" placeholder='{"name":"Paneer tikka wrap","calories":420,"protein_g":22,"carbs_g":38,"fat_g":18}' style="width:100%;min-height:70px"></textarea>
+<button class="btn" style="margin-top:8px" onclick="parseAiPaste()">Read it &amp; save</button>
+<p class="small" id="aiPromptStatus" style="margin-top:6px;color:var(--muted)"></p>
+<p class="small" style="margin-top:8px">AI nutrition figures are estimates. Check ingredient amounts before relying on them.</p>
+</div></details>
 <section class="card recipe-library"><div class="recipe-library-head"><h3>${uiIcon("book")} Recipe list</h3><input class="recipe-inline-search" type="search" aria-label="Search recipes and ingredients" placeholder="Search dishes, ingredients or related names…" value="${escRecipe(recipeSearch)}" oninput="updateRecipeSearch(this.value)"><select aria-label="Sort recipes" onchange="setRecipeSort(this.value)"><option value="name" ${recipeSort==='name'?'selected':''}>A–Z</option><option value="kcal" ${recipeSort==='kcal'?'selected':''}>Calories</option></select></div><div id="recipeLibraryResults">${renderRecipeLibrary()}</div></section>
 <div class="recipe-companion-grid"><section class="card pantry-recipe-panel"><h3>🧺 Recipes with available pantry items</h3><p class="small">Matches ingredients currently in your pantry.</p><div class="recipe-scroll">${available.length?available.map(recipeCard).join(''):'<p class="small">No ingredient matches yet. Update your pantry to see recipes here.</p>'}</div></section><aside class="custom-food-panel">${renderCustomFoodsList()||'<section class="card"><h3>📋 Your custom foods</h3><p class="small">Foods you save from Quick-add will appear here.</p></section>'}</aside></div>`;
 }
