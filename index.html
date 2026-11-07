@@ -3534,6 +3534,27 @@ html body #calendarIconPicker .soham-extra-icon:is(.selected,:hover,:focus-visib
 @media(max-width:620px){html body #toastMsg,html body #undoToast{font-size:12px!important;}}
 
 </style>
+<style id="soham-v35-unified-timeline-icons">
+/* V35: all routine beads use a single transparent champagne-gold line-icon style. */
+html body main#app :is(.bead .circ,.checklist-bar-circle) .soham-glass-icon,
+html body main#app .tblock .soham-glass-icon {
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+  color:#ddc27d!important;
+  width:var(--glass-icon-size,20px)!important;
+  height:var(--glass-icon-size,20px)!important;
+  border-radius:0!important;
+}
+html body main#app :is(.bead .circ,.checklist-bar-circle) .soham-glass-icon svg,
+html body main#app .tblock .soham-glass-icon svg {
+  stroke:#ddc27d!important;
+  fill:none!important;
+  stroke-width:1.6!important;
+  filter:none!important;
+}
+</style>
 </head>
 <body>
 <div class="bg-wm" id="bgWm"></div>
@@ -4871,6 +4892,18 @@ function fmt12(hhmm){ const m=toMin(hhmm); let h=Math.floor(m/60), mm=m%60; cons
 // A block's icon is usually an emoji string, but can be a custom image (a data: URI the person
 // supplied). Render either the right way instead of printing a raw data: URI as text.
 const GLASS_ICON_PATHS = {
+
+ showerline:'<path d="M4 21V8a5 5 0 0 1 10 0M11 8h7v3h-7zM12 14v1m4-1v1m-4 4v1m4-1v1"/>',
+ magnify:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5.5 5.5"/>',
+ briefcase:'<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4h8v3M3 12h18M10 12v3h4v-3"/>',
+ walkline:'<circle cx="14" cy="4" r="2"/><path d="m10 21 2-6-3-3 3-5 4 3 3 1M12 15l5 6M9 12l-5 5"/>',
+ leafy:'<path d="M4 20C1 9 9 3 21 3c0 12-6 19-17 17ZM4 20 17 7M9 15v-5m5 0h5"/>',
+ palette:'<path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1-4 2 2 0 0 1 1-4h3c5 0 2-10-6-10Z"/><circle cx="7" cy="10" r=".8"/><circle cx="10" cy="6.5" r=".8"/><circle cx="15" cy="7" r=".8"/><circle cx="6.5" cy="15" r=".8"/>',
+ sponge:'<rect x="3" y="7" width="18" height="12" rx="3"/><path d="M6 11h1m4 4h1m5-4h1"/>',
+ heartline:'<path d="M12 21 3 12C-2 5 7 0 12 7c5-7 14-2 9 5l-9 9Z"/>',
+ calendarline:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m5 5h3"/>',
+ phone:'<path d="M7 3h4l1 5-3 2c2 4 4 6 7 7l2-3 4 2v4c-1 3-5 3-10 0C6 16 3 11 3 7c0-2 1-4 4-4Z"/>',
+ starline:'<path d="m12 2 3.2 6.8 7.3 1-5.3 5.2 1.3 7.3L12 18.8l-6.5 3.5 1.2-7.3L1.5 9.8l7.3-1L12 2Z"/>',
  'extra-beauty':'<path d="M12 3c3 3 5 6 5 10a5 5 0 0 1-10 0c0-4 2-7 5-10Z"/><path d="M9 17v4h6v-4M9 10c2 1 4 1 6 0"/>',
  'extra-makeup':'<path d="M8 3h8v3H8zM9 6h6v13a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V6ZM9 11h6"/>',
  'extra-shower':'<path d="M4 21V8a5 5 0 0 1 10 0M11 8h7v3h-7zM12 14v1m4-1v1m-4 4v1m4-1v1"/>',
@@ -4914,13 +4947,24 @@ washer:'<rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M4 7h16"/><c
  moon:'<path d="M20 15A9 9 0 0 1 9 4 9 9 0 1 0 20 15ZM18 3v4M16 5h4"/>',
  spark:'<path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2Z"/>'
 };
-const GLASS_EMOJI_ICONS = {'🐓':'sunrise','🌅':'sunrise','☕':'coffee','🏋️':'dumbbell','🛁':'bath','🧘':'lotus','🥣':'bowl','🧑‍💻':'laptop','🦋':'butterfly','🎓':'book','🍽️':'plate','📈':'chart','🧹':'broom','🧼':'broom','🏠':'broom','♨️':'pot','📬':'mail','🌳':'walk','🥗':'plate','✍️':'pen','🗂️':'folder','👨‍👩‍👧':'people','📚':'book','🕯️':'candle','💤':'moon','📌':'spark','📎':'spark','✨':'spark'};
+const GLASS_EMOJI_ICONS = {'🐓':'sunrise','🌅':'sunrise','☕':'coffee','🏋️':'dumbbell','🛁':'bath','🧘':'lotus','🥣':'bowl','🧑‍💻':'laptop','🦋':'butterfly','🎓':'book','🍽️':'plate','📈':'chart','🧹':'broom','🧼':'broom','🏠':'broom','♨️':'pot','📬':'mail','🌳':'walk','🥗':'plate','✍️':'pen','🗂️':'folder','👨‍👩‍👧':'people','📚':'book','🕯️':'candle','💤':'moon','📌':'spark','📎':'spark','✨':'spark',
+ '🚿':'showerline','🔎':'magnify','🔍':'magnify','💼':'briefcase','📊':'chart','📉':'chart','🚶':'walkline','🚶‍♀️':'walkline','🚶‍♂️':'walkline','🌿':'leafy','🍃':'leafy','🎨':'palette','🧽':'sponge','❤️':'heartline','❤':'heartline','♥️':'heartline',
+ '🗓️':'calendarline','📅':'calendarline','☎️':'phone','📞':'phone','⭐':'starline','🌟':'starline','🎬':'extra-movie','🎵':'extra-music','🎶':'extra-music','🎧':'extra-podcast','🎲':'extra-boardgames','👥':'people','📝':'pen','🖊️':'pen','🆘':'extra-emergency','🛒':'extra-errands','🧴':'extra-beauty','💄':'extra-makeup','💅':'extra-grooming','🌸':'extra-spa','💌':'mail','🌙':'moon','🌞':'sunrise','🔔':'clock','🧑‍🏫':'book','💻':'laptop','🍳':'pot','🍲':'bowl','🥘':'pot','🧺':'laundry','🧻':'sponge','🧾':'folder','🧠':'book','💰':'chart','📖':'book','✏️':'pen','🎯':'starline','🍛':'plate','🥄':'plate','🧘‍♀️':'lotus','🪷':'lotus','🌻':'leafy','🏃':'walkline','😴':'moon'};
 function iconHTML(ic, size){
- size = size||20;
- if(typeof ic==='string'&&ic.startsWith('data:image')&&DEFAULT_TEMPLATE.some(b=>b.icon===ic&&b.cat==='food'))ic='glass:pot';
- if(ic && typeof ic==='string' && ic.indexOf('data:image')===0){return `<img src="${ic}" style="width:${size}px;height:${size}px;object-fit:contain;vertical-align:middle;border-radius:5px">`;}
- const name=GLASS_EMOJI_ICONS[ic]||(typeof ic==='string'&&ic.startsWith('glass:')?ic.slice(6):null);
- if(name&&GLASS_ICON_PATHS[name])return `<span class="soham-glass-icon" style="--glass-icon-size:${Math.max(16,Math.min(40,Number(size)||20))}px" aria-label="${name.replace(/-/g,' ')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLASS_ICON_PATHS[name]}</svg></span>`;
+ size=Number(size)||20;
+ // V35: translate legacy emoji and neon tokens at render time, not in saved schedules.
+ // Custom images are left intact unless they are the default cooking icon.
+ if(typeof ic==='string'&&DEFAULT_TEMPLATE.some(b=>b.icon===ic&&b.cat==='food')&&(/^(data:image|\.\/assets\/images\/)/).test(ic))ic='glass:pot';
+ if(ic&&typeof ic==='string'&&ic.startsWith('data:image'))return `<img src="${ic}" style="width:${size}px;height:${size}px;object-fit:contain;vertical-align:middle;border-radius:5px">`;
+ if(ic&&typeof ic==='string'&&/^(\.\/assets\/|assets\/)/.test(ic))return `<img src="${ic}" style="width:${size}px;height:${size}px;object-fit:contain;vertical-align:middle;border-radius:5px">`;
+ const token=typeof ic==='string'?ic:'';
+ const neonName=token.startsWith('neon:')?token.slice(5):null;
+ const neonEquivalents={sun:'sunrise',water:'bath',bowl:'bowl',chores:'broom',search:'magnify',applications:'briefcase',cup:'coffee',book:'book',clock:'calendarline',cooking:'pot',diya:'candle',plate:'plate',rest:'moon',excel:'chart',hobby:'palette',leaf:'leafy',walk:'walkline',cleanup:'sponge',heart:'heartline',candle:'candle',moon:'moon'};
+ const name=GLASS_EMOJI_ICONS[token]||(token.startsWith('glass:')?token.slice(6):null)||(neonName?neonEquivalents[neonName]:null);
+ if(name&&GLASS_ICON_PATHS[name])return `<span class="soham-glass-icon" style="--glass-icon-size:${Math.max(16,Math.min(40,size))}px" aria-label="${name.replace(/-/g,' ')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLASS_ICON_PATHS[name]}</svg></span>`;
+ // Unknown legacy emoji: a consistent line-art symbol rather than multicolour emoji.
+ // Original token remains saved and can be edited through the activity picker.
+ if(token && /[^\x00-\x7F]/.test(token))return `<span class="soham-glass-icon" style="--glass-icon-size:${Math.max(16,Math.min(40,size))}px" aria-label="Activity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLASS_ICON_PATHS.spark}</svg></span>`;
  return ic||'';
 }
 
