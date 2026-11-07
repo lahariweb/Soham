@@ -3442,6 +3442,98 @@ main#app .recipe-ai-numbers textarea,main#app .recipe-ai-numbers select {
 }
 
 </style>
+<style id="soham-v34-notifications-and-icon-consistency">
+
+/* V34: readable temporary notifications in the same body typography as Soham. */
+html body #toastMsg,html body #undoToast,
+html body .toast-msg,html body .undo-toast,
+html body #toastMsg *,html body #undoToast *,
+html body .toast-msg *,html body .undo-toast * {
+  font-family: 'Nunito Sans', Arial, sans-serif !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  font-stretch: normal !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+  line-height: 1.45 !important;
+}
+html body #toastMsg,html body #undoToast,
+html body .toast-msg,html body .undo-toast {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  background: #10221b !important;
+  color: #f7f0e3 !important;
+  -webkit-text-fill-color: #f7f0e3 !important;
+}
+html body #undoToast span,html body #toastMsg span {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+html body #undoToast button,html body .undo-toast button {
+  font-family:'Nunito Sans',Arial,sans-serif !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  letter-spacing:0 !important;
+  color:#f2d3a0 !important;
+  -webkit-text-fill-color:#f2d3a0 !important;
+}
+/* V34: unify glass-line icon appearance; saved icon values and geometry stay untouched. */
+html body .soham-glass-icon {
+  box-sizing:border-box !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex:0 0 auto !important;
+  border:1px solid rgba(221,196,154,.38) !important;
+  border-radius:9px !important;
+  background:transparent !important;
+  color:#ddc49d !important;
+  box-shadow:none !important;
+  text-shadow:none !important;
+  filter:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+html body .soham-glass-icon svg {
+  display:block !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  color:inherit !important;
+  stroke:currentColor !important;
+  filter:none !important;
+  drop-shadow:none !important;
+}
+/* Exactly three visible Extra Icon rows; uniform size, transparent button tiles. */
+html body #calendarIconPicker .soham-extra-icon {
+  box-sizing:border-box !important;
+  background:transparent !important;
+  color:#ddc49d !important;
+  border:1px solid rgba(221,196,154,.38) !important;
+  border-radius:10px !important;
+  box-shadow:none !important;
+  filter:none !important;
+  text-shadow:none !important;
+}
+html body #calendarIconPicker .soham-extra-icon .soham-glass-icon {
+  width:25px !important;height:25px !important;
+  padding:0 !important;border:0 !important;
+  border-radius:0 !important;background:transparent !important;
+}
+html body #calendarIconPicker .soham-extra-icon svg {
+  width:23px !important;height:23px !important;
+  stroke:#ddc49d !important;filter:none !important;
+}
+html body #calendarIconPicker .soham-extra-icon:is(.selected,:hover,:focus-visible) {
+  background:rgba(218,193,152,.06) !important;
+  border-color:#e7d0a7 !important;
+  box-shadow:0 0 7px rgba(218,185,127,.14) !important;
+}
+@media(max-width:620px){html body #toastMsg,html body #undoToast{font-size:12px!important;}}
+
+</style>
 </head>
 <body>
 <div class="bg-wm" id="bgWm"></div>
